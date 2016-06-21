@@ -41,9 +41,39 @@ angular.module('starter')
     $state.go('login');
   };
 
-  $scope.performValidRequest = function(){};
+  $scope.performValidRequest = function(){
+    $http.get('http://localhost:8100/valid')
+    .then(
+      function(result){
+        $scope.response = result;
+      },
+      function (err) {
+        $scope.response = err;
+      }
+    );
+  };
 
-  $scope.performUnauthorizedRequest = function(){};
+  $scope.performUnauthorizedRequest = function(){
+    $http.get('http://localhost:8100/notauthorized')
+    .then(
+      function(result){
+        $scope.response = result;
+      },
+      function (err) {
+        $scope.response = err;
+      }
+    );
+  };
 
-  $scope.performInvalidRequest = function(){};
+  $scope.performInvalidRequest = function(){
+    $http.get('http://localhost:8100/notauthenticated')
+    .then(
+      function(result){
+        $scope.response = result;
+      },
+      function (err) {
+        $scope.response = err;
+      }
+    );
+  };
 })
